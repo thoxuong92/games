@@ -1,0 +1,14 @@
+[
+ {
+  "id": "fish-hunter",
+  "title": "Fish Hunter",
+  "description": "Aim, fire and catch 27 kinds of sea creatures: bosses, fish tides, bombs and coin showers.",
+  "tags": [
+   "Arcade",
+   "Shooting"
+  ],
+  "icon": "fish-hunter/icon.png",
+  "url": "fish-hunter/",
+  "updated": "2026-10-17"
+ }
+]
