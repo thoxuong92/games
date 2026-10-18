@@ -961,6 +961,8 @@ window.addEventListener('hashchange', route);
 await loadApiBase();
 
 // Trong Discord: đăng nhập chạy nền (hộp xác nhận của Discord có thể mất vài giây). Xong thì đổi sang tên Discord
+// Trong Discord không có nút về trang chủ của game.joukyuu.com
+if (inDiscord()) document.querySelector('.site-home').hidden = true;
 if (inDiscord()) {
     startDiscord().then(result => {
         if (result.player) {

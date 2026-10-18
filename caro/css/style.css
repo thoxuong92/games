@@ -65,6 +65,11 @@ p { margin: 0; }
     border-bottom: 1px solid var(--border);
 }
 
+/* Về trang chủ game.joukyuu.com (ẩn khi chơi trong Discord) */
+.site-home { color: var(--muted); font-size: 13px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.site-home:hover { color: var(--text); text-decoration: underline; }
+.site-home[hidden] { display: none; }
+
 .brand {
     display: inline-flex;
     align-items: center;
