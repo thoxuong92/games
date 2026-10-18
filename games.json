@@ -56,5 +56,24 @@
    "discordIdentify": false,
    "accounts": ""
   }
+ },
+ {
+  "id": "caro",
+  "title": "Caro",
+  "description": "Gomoku (Vietnamese Caro) on a 20 x 15 board: get five in a row before the machine does.",
+  "tags": [
+   "Board",
+   "Strategy"
+  ],
+  "icon": "caro/icon.png",
+  "url": "caro/",
+  "updated": "2026-10-18",
+  "privacy": {
+   "server": "",
+   "tables": false,
+   "leaderboards": false,
+   "discordIdentify": false,
+   "accounts": ""
+  }
  }
 ]
