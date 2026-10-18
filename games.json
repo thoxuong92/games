@@ -16,5 +16,23 @@
    "leaderboards": true,
    "discordIdentify": true
   }
+ },
+ {
+  "id": "chinese-chess",
+  "title": "Cờ Tướng - Chinese Chess",
+  "description": "Classic Xiangqi: play the computer at three levels or a friend on the same device.",
+  "tags": [
+   "Board",
+   "Strategy"
+  ],
+  "icon": "chinese-chess/icon.png",
+  "url": "chinese-chess/",
+  "updated": "2026-10-18",
+  "privacy": {
+   "server": "",
+   "tables": false,
+   "leaderboards": false,
+   "discordIdentify": false
+  }
  }
 ]
