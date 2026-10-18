@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đăng nhập Discord · Joukyuu Games</title>
+<style>
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #f2fdff; color: #1d5b8f; font: 16px/1.5 system-ui, sans-serif; text-align: center; padding: 16px; }
+</style>
+</head>
+<body>
+<p id="msg">Đang hoàn tất đăng nhập Discord...</p>
+<script>
+// Discord chuyển về đây sau khi người chơi đồng ý (OAuth implicit grant): access token nằm trong phần #
+// của địa chỉ. Gửi nó cho cửa sổ game đã mở trang này (cùng site), rồi đóng. Token không rời trình duyệt
+// ngoài lần game gửi nó cho máy chủ tài khoản để xác minh với Discord.
+(function () {
+  var params = new URLSearchParams(location.hash.slice(1));
+  var query = new URLSearchParams(location.search);
+  var data = {
+    type: 'joukyuu-discord',
+    state: params.get('state') || query.get('state') || '',
+    accessToken: params.get('access_token') || '',
+    error: params.get('error_description') || query.get('error_description') || params.get('error') || query.get('error') || ''
+  };
+  history.replaceState(null, '', location.pathname);
+  var msg = document.getElementById('msg');
+  if (window.opener && !window.opener.closed) {
+    window.opener.postMessage(data, location.origin);
+    msg.textContent = data.accessToken ? 'Xong! Cửa sổ này sẽ tự đóng.' : 'Chưa đăng nhập được Discord: ' + (data.error || 'đã huỷ') + '.';
+    setTimeout(function () { window.close(); }, data.accessToken ? 300 : 2500);
+  } else {
+    msg.textContent = 'Hãy mở lại game và chọn "Đăng nhập bằng Discord" lần nữa.';
+  }
+})();
+</script>
+</body>
+</html>

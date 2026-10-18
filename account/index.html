@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tài khoản · Joukyuu Games</title>
+<link rel="icon" href="../favicon.png">
+<style>
+  :root { color-scheme: light; }
+  body { margin: 0; background: #f2fdff; color: #1d5b8f; font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 560px; margin: 0 auto; padding: 28px 16px 64px; }
+  h1 { color: #ff5a8f; margin: 0 0 4px; font-size: 30px; }
+  h2 { font-size: 19px; margin: 26px 0 8px; }
+  a { color: #0b6f93; }
+  .card { background: #fff; border-radius: 16px; padding: 18px; box-shadow: 0 4px 18px rgba(29, 91, 143, .12); margin-top: 16px; }
+  label { display: block; font-size: 14px; margin: 10px 0 4px; }
+  input { width: 100%; box-sizing: border-box; padding: 11px 12px; border: 1px solid #b8dcef; border-radius: 10px; font-size: 16px; }
+  button { margin-top: 12px; padding: 11px 16px; border: 0; border-radius: 10px; background: #16a34a; color: #fff; font-weight: 700; font-size: 15px; cursor: pointer; }
+  button.secondary { background: #2f6fa3; } button.danger { background: #b91c1c; }
+  .note { font-size: 14px; color: #4a7aa3; }
+  .msg { min-height: 20px; margin-top: 8px; font-size: 14px; } .msg.err { color: #b91c1c; } .msg.ok { color: #15803d; }
+</style>
+</head>
+<body>
+<main>
+  <a href="../">← Joukyuu Games</a>
+  <h1>Tài khoản</h1>
+  <p class="note">Một tài khoản cho mọi game trên game.joukyuu.com, cả khi chơi trong Discord.</p>
+
+  <div class="card" id="who">Đang tải...</div>
+
+  <div class="card" id="password-card" hidden>
+    <h2>Đổi mật khẩu</h2>
+    <form id="password-form">
+      <label id="current-label">Mật khẩu hiện tại<input type="password" name="password" autocomplete="current-password"></label>
+      <label>Mật khẩu mới (ít nhất 8 ký tự)<input type="password" name="newPassword" autocomplete="new-password" required></label>
+      <button type="submit" class="secondary">Đổi mật khẩu</button>
+      <div class="msg" id="password-msg"></div>
+    </form>
+  </div>
+
+  <div class="card" id="delete-card" hidden>
+    <h2>Xoá tài khoản</h2>
+    <p class="note">Xoá vĩnh viễn tài khoản cùng tiến trình đã lưu, Elo và điểm trên bảng xếp hạng của mọi game. Tiến trình còn trong trình duyệt của bạn không bị xoá.</p>
+    <form id="delete-form">
+      <label id="delete-label">Nhập mật khẩu để xác nhận<input type="password" name="password" autocomplete="current-password"></label>
+      <button type="submit" class="danger">Xoá tài khoản</button>
+      <div class="msg" id="delete-msg"></div>
+    </form>
+  </div>
+  <p class="note"><a href="../privacy.html">Chính sách quyền riêng tư</a> · <a href="../terms.html">Điều khoản</a></p>
+</main>
+<script src="joukyuu-account.js"></script>
+<script>
+  // Trang này dùng chung phiên với các game (localStorage joukyuu:session), không có tiến trình game.
+  const app = { fire(event) { if (event === 'account:change') render(); } };
+  const account = JoukyuuAccount.init(app, { game: 'site' });
+  const $ = id => document.getElementById(id);
+
+  function render() {
+    const a = account.account;
+    const who = $('who');
+    who.innerHTML = '';
+    if (!a) { who.textContent = account.status || 'Đang tải...'; return; }
+    const h = document.createElement('h2');
+    h.textContent = a.displayName;
+    const p = document.createElement('p');
+    p.className = 'note';
+    p.textContent = a.guest ? 'Bạn đang là khách trên trình duyệt này. Đăng ký hoặc đăng nhập để giữ tiến trình.'
+      : [a.username && `Tên đăng nhập: ${a.username}`, a.email && `Email: ${a.email}`, a.discord && `Discord: ${a.discord.name}`].filter(Boolean).join(' · ');
+    const open = document.createElement('button');
+    open.textContent = a.guest ? 'Đăng nhập / Đăng ký' : 'Hồ sơ, liên kết Discord, đăng xuất';
+    open.onclick = () => account.openPanel();
+    who.append(h, p, open);
+    // mật khẩu chỉ dùng được khi có email / tên đăng nhập (tài khoản chỉ Discord: thêm trong bảng hồ sơ)
+    $('password-card').hidden = a.guest || (!a.username && !a.email);
+    $('delete-card').hidden = a.guest;
+    $('current-label').hidden = !a.hasPassword;
+    $('password-card').querySelector('h2').textContent = a.hasPassword ? 'Đổi mật khẩu' : 'Đặt mật khẩu';
+    $('delete-label').firstChild.textContent = a.hasPassword ? 'Nhập mật khẩu để xác nhận' : 'Gõ XOA để xác nhận';
+    $('delete-label').querySelector('input').type = a.hasPassword ? 'password' : 'text';
+  }
+
+  const say = (el, text, ok) => { el.textContent = text; el.className = `msg ${ok ? 'ok' : 'err'}`; };
+
+  $('password-form').onsubmit = async e => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    try {
+      await account.api('POST', '/v1/me/password', { password: f.get('password'), newPassword: f.get('newPassword') });
+      e.target.reset();
+      say($('password-msg'), 'Đã đổi mật khẩu.', true);
+      account._setAccount((await account.api('GET', '/v1/me')).account);
+    } catch (err) { say($('password-msg'), err.message); }
+  };
+
+  $('delete-form').onsubmit = async e => {
+    e.preventDefault();
+    if (!confirm('Xoá vĩnh viễn tài khoản và mọi dữ liệu của nó?')) return;
+    const value = new FormData(e.target).get('password');
+    try {
+      await account.api('DELETE', '/v1/me', account.account.hasPassword ? { password: value } : { confirm: String(value).trim().toUpperCase() });
+      account.token = '';
+      say($('delete-msg'), 'Đã xoá tài khoản.', true);
+      setTimeout(() => location.reload(), 1200);
+    } catch (err) { say($('delete-msg'), err.message); }
+  };
+
+  account.ready.then(render);
+</script>
+</body>
+</html>
