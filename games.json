@@ -78,5 +78,25 @@
    "matchHistory": true,
    "tableData": "It sends your player name and the moves you make; the other players at the table see your name and your moves."
   }
+ },
+ {
+  "id": "chess-3d",
+  "title": "Chess 3D",
+  "description": "Chess in 3D: play a friend on one screen or the machine at three levels, with undo and full rules.",
+  "tags": [
+   "Board",
+   "Strategy",
+   "3D"
+  ],
+  "icon": "chess-3d/icon.png",
+  "url": "chess-3d/",
+  "updated": "2026-10-18",
+  "privacy": {
+   "server": "",
+   "tables": false,
+   "leaderboards": false,
+   "discordIdentify": false,
+   "accounts": ""
+  }
  }
 ]
