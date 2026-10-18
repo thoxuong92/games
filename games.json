@@ -20,19 +20,20 @@
  {
   "id": "chinese-chess",
   "title": "Cờ Tướng - Chinese Chess",
-  "description": "Classic Xiangqi: play the computer at three levels or a friend on the same device.",
+  "description": "Classic Xiangqi: play online with Elo ranking, invite a friend, or beat the computer at three levels.",
   "tags": [
    "Board",
-   "Strategy"
+   "Strategy",
+   "Multiplayer"
   ],
   "icon": "chinese-chess/icon.png",
   "url": "chinese-chess/",
   "updated": "2026-10-18",
   "privacy": {
-   "server": "",
-   "tables": false,
-   "leaderboards": false,
-   "discordIdentify": false
+   "server": "Cloudflare",
+   "tables": true,
+   "leaderboards": true,
+   "discordIdentify": true
   }
  }
 ]
