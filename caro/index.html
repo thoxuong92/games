@@ -1,22 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, interactive-widget=resizes-visual, user-scalable=no, viewport-fit=cover">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Caro: năm quân liên tiếp. Chơi với máy ở bốn mức độ, đấu online, xem trực tiếp và xem lại ván đấu.">
+    <meta name="theme-color" content="#0b1020">
     <title>Caro</title>
     <link rel="icon" href="icon.png">
-    
-    <style>
-        html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #000; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
-        canvas { width: 100%; height: 100%; display: block; }
-        #loading { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; color: rgba(255,255,255,.7); font: 500 13px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        #loading::before { content: ""; width: 28px; height: 28px; border: 3px solid rgba(255,255,255,.15); border-top-color: #fff; border-radius: 50%; animation: spin .8s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-    </style>
+    <link rel="icon" href="icon.svg?v=d5210c56" type="image/svg+xml">
+    <link rel="stylesheet" href="css/style.css?v=849652d4">
 </head>
 <body>
-    <canvas id="app-canvas"></canvas>
-    <div id="loading"></div>
-    <script src="game.js?v=8d40fe1f"></script>
+    <header class="topbar">
+        <a class="brand" href="#/" aria-label="Trang chủ Caro">
+            <span class="brand-mark" aria-hidden="true"><span class="o"></span><span class="x"></span></span>
+            <span>Caro</span>
+        </a>
+        <nav class="topnav" aria-label="Chính">
+            <a href="#/ai" data-route="ai">Với máy</a>
+            <a href="#/lobby" data-route="lobby">Online</a>
+            <a href="#/leaderboard" data-route="leaderboard">Xếp hạng</a>
+            <a href="#/history" data-route="history">Lịch sử</a>
+            <a href="#/rules" data-route="rules">Luật chơi</a>
+        </nav>
+        <label class="name-field">
+            <span class="sr-only">Tên của bạn</span>
+            <input id="name" class="input name-input" maxlength="20" autocomplete="nickname" placeholder="Tên của bạn">
+        </label>
+    </header>
+
+    <main id="view" class="container"></main>
+    <footer class="site-footer">
+        <a href="https://game.joukyuu.com/terms.html">Điều khoản sử dụng</a>
+        <a href="https://game.joukyuu.com/privacy.html">Chính sách bảo mật</a>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script type="module" src="js/app.js?v=b546e7ed"></script>
 </body>
 </html>

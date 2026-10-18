@@ -60,20 +60,23 @@
  {
   "id": "caro",
   "title": "Caro",
-  "description": "Gomoku (Vietnamese Caro) on a 20 x 15 board: get five in a row before the machine does.",
+  "description": "Five in a row on a 20 x 15 board: play the computer at four levels, or online with friends and in Discord voice channels.",
   "tags": [
    "Board",
-   "Strategy"
+   "Strategy",
+   "Multiplayer"
   ],
   "icon": "caro/icon.png",
   "url": "caro/",
   "updated": "2026-10-18",
   "privacy": {
-   "server": "",
-   "tables": false,
-   "leaderboards": false,
-   "discordIdentify": false,
-   "accounts": ""
+   "server": "Cloudflare",
+   "tables": true,
+   "leaderboards": true,
+   "discordIdentify": true,
+   "accounts": "",
+   "matchHistory": true,
+   "tableData": "It sends your player name and the moves you make; the other players at the table see your name and your moves."
   }
  }
 ]
