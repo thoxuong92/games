@@ -37,5 +37,24 @@
    "discordIdentify": true,
    "accounts": "Hostinger"
   }
+ },
+ {
+  "id": "minesweeper",
+  "title": "Minesweeper",
+  "description": "Classic minesweeper on a 30 x 16 board with 99 mines: tap to open, hold to flag, chord to clear around a number.",
+  "tags": [
+   "Puzzle",
+   "Classic"
+  ],
+  "icon": "minesweeper/icon.png",
+  "url": "minesweeper/",
+  "updated": "2026-10-18",
+  "privacy": {
+   "server": "",
+   "tables": false,
+   "leaderboards": false,
+   "discordIdentify": false,
+   "accounts": ""
+  }
  }
 ]
