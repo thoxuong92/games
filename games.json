@@ -92,8 +92,8 @@
   "url": "chess-3d/",
   "updated": "2026-10-18",
   "privacy": {
-   "server": "",
-   "tables": false,
+   "server": "Cloudflare",
+   "tables": true,
    "leaderboards": false,
    "discordIdentify": false,
    "accounts": ""
