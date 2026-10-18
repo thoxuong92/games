@@ -34,7 +34,7 @@ export const DEFAULT_RULESET = 'standard';
 
 export const LEVELS = {
     easy: { label: 'Dễ', description: 'Đi khá ngẫu nhiên, đôi khi bỏ qua nước chặn.' },
-    medium: { label: 'Vừa', description: 'Chặn và tấn công theo bảng điểm của bản Unity.' },
+    medium: { label: 'Vừa', description: 'Chặn và tấn công theo bảng điểm cân bằng.' },
     hard: { label: 'Khó', description: 'Nhìn trước hai nước: biết chặn sớm và tạo thế kép.' },
     expert: { label: 'Cao thủ', description: 'Nhìn trước bốn nước, không bỏ sót đòn thắng.' }
 };
