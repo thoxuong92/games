@@ -50,11 +50,11 @@
   "url": "minesweeper/",
   "updated": "2026-10-18",
   "privacy": {
-   "server": "",
+   "server": "Cloudflare",
    "tables": false,
-   "leaderboards": false,
+   "leaderboards": true,
    "discordIdentify": false,
-   "accounts": ""
+   "accounts": "Hostinger"
   }
  },
  {
