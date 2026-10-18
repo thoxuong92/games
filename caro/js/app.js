@@ -159,6 +159,7 @@ function aiSetupView() {
         localStorage.setItem('caro.rules', key);
         for (const a of links) a.href = `#/ai/${a.dataset.level}/${key}`;
     });
+    setTeardown(() => picker.destroy());
     return page(
         header('Chơi với máy', 'Chọn mức và luật, rồi bắt đầu. Bạn đi trước bằng quân tròn đỏ.'),
         picker.el,
@@ -182,10 +183,14 @@ function aiSetupView() {
 // ------------------------------------------------------------------ luật chơi và hướng dẫn
 
 // Chọn bộ luật: các nút, và mô tả của bộ đang chọn. onPick(key) khi người chơi đổi
+// Hình minh hoạ dưới các nút: thế cờ của bộ luật đang chọn và kết quả của nó
 function rulesPicker(initial, onPick) {
     let current = initial;
     const note = h('p', { class: 'muted small' });
     const chips = h('div', { class: 'chips', role: 'group', 'aria-label': 'Luật chơi' });
+    const host = h('div', { class: 'mini-board', 'aria-hidden': 'true' });
+    const board = new BoardView(host, { width: 9, height: 5 });
+    const caption = h('figcaption', { class: 'muted small' });
     const draw = () => {
         chips.replaceChildren(...Object.entries(RULESETS).map(([key, rule]) => h('button', {
             class: `chip ${key === current ? 'on' : ''}`,
@@ -199,9 +204,17 @@ function rulesPicker(initial, onPick) {
             text: rule.label
         })));
         note.textContent = RULESETS[current].description;
+        const variant = RULE_VARIANTS.find(v => v.key === current);
+        board.setMoves(variant.moves, { winLine: variant.line || null });
+        caption.textContent = `${variant.caption}: ${variant.verdict === 'win' ? 'thắng' : 'không tính'}`;
     };
     draw();
-    return { el: h('div', { class: 'rules-picker' }, chips, note), value: () => current };
+    const figure = h('figure', { class: 'figure' }, host, caption);
+    return {
+        el: h('div', { class: 'rules-picker' }, chips, note, figure),
+        value: () => current,
+        destroy: () => board.destroy()
+    };
 }
 
 function readRules() {
@@ -523,7 +536,10 @@ function lobbyView() {
     }
 
     const timer = setInterval(refresh, 4000);
-    setTeardown(() => clearInterval(timer));
+    setTeardown(() => {
+        clearInterval(timer);
+        rulesChoice.destroy();
+    });
     refresh();
 
     return page(
