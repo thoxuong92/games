@@ -14,7 +14,8 @@
    "server": "Cloudflare",
    "tables": true,
    "leaderboards": true,
-   "discordIdentify": true
+   "discordIdentify": true,
+   "accounts": "Hostinger"
   }
  },
  {
