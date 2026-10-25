@@ -98,5 +98,24 @@
    "discordIdentify": false,
    "accounts": ""
   }
+ },
+ {
+  "id": "tetra-pick",
+  "title": "Tetra Pick",
+  "description": "Pick the four bricks that form the shown tetromino, in any rotation, to clear them; empty whole rows to bring new bricks down and crack the locked ones.",
+  "tags": [
+   "Puzzle",
+   "Blocks"
+  ],
+  "icon": "tetra-pick/icon.png",
+  "url": "tetra-pick/",
+  "updated": "2026-10-25",
+  "privacy": {
+   "server": "",
+   "tables": false,
+   "leaderboards": false,
+   "discordIdentify": false,
+   "accounts": ""
+  }
  }
 ]
