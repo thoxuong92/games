@@ -98,24 +98,5 @@
    "discordIdentify": false,
    "accounts": ""
   }
- },
- {
-  "id": "brick-pick",
-  "title": "Brick Pick",
-  "description": "Pick four bricks in the shape of the shown block to clear them, empty whole rows to bring new bricks down, and crack the locked ones.",
-  "tags": [
-   "Puzzle",
-   "Blocks"
-  ],
-  "icon": "brick-pick/icon.png",
-  "url": "brick-pick/",
-  "updated": "2026-10-25",
-  "privacy": {
-   "server": "",
-   "tables": false,
-   "leaderboards": false,
-   "discordIdentify": false,
-   "accounts": ""
-  }
  }
 ]
