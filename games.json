@@ -117,5 +117,24 @@
    "discordIdentify": false,
    "accounts": "Hostinger"
   }
+ },
+ {
+  "id": "block-drop-sort",
+  "title": "Block Drop Sort",
+  "description": "Tap jelly blocks to drop them down the funnel into boxes of their colour, and don't let the tray overflow.",
+  "tags": [
+   "Puzzle",
+   "Sorting"
+  ],
+  "icon": "block-drop-sort/icon.png",
+  "url": "block-drop-sort/",
+  "updated": "2026-10-26",
+  "privacy": {
+   "server": "",
+   "tables": false,
+   "leaderboards": false,
+   "discordIdentify": false,
+   "accounts": ""
+  }
  }
 ]
