@@ -130,11 +130,11 @@
   "url": "block-drop-sort/",
   "updated": "2026-10-26",
   "privacy": {
-   "server": "",
+   "server": "Cloudflare",
    "tables": false,
-   "leaderboards": false,
+   "leaderboards": true,
    "discordIdentify": false,
-   "accounts": ""
+   "accounts": "Hostinger"
   }
  },
  {
