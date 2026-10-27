@@ -140,14 +140,14 @@
  {
   "id": "bolt-box",
   "title": "Bolt Box",
-  "description": "Unscrew the colored bolts into matching boxes and take apart 200 pictures built from planks: cars, birds, clockwork and more.",
+  "description": "Unscrew the colored bolts into matching boxes and take apart 400 levels of pictures built from planks: cars, birds, clockwork and more.",
   "tags": [
    "Puzzle",
    "Casual"
   ],
   "icon": "bolt-box/icon.png",
   "url": "bolt-box/",
-  "updated": "2026-10-26",
+  "updated": "2026-10-27",
   "privacy": {
    "server": "Cloudflare",
    "tables": false,
