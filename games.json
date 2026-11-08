@@ -155,5 +155,24 @@
    "discordIdentify": false,
    "accounts": "Hostinger"
   }
+ },
+ {
+  "id": "chua-online",
+  "title": "Chùa Online",
+  "description": "Visit eleven famous Vietnamese pagodas: light incense, ring the bell, meditate, chant and earn merit.",
+  "tags": [
+   "Casual",
+   "Simulation"
+  ],
+  "icon": "chua-online/icon.png",
+  "url": "chua-online/",
+  "updated": "2026-11-08",
+  "privacy": {
+   "server": "Cloudflare",
+   "tables": false,
+   "leaderboards": false,
+   "discordIdentify": false,
+   "accounts": "Hostinger"
+  }
  }
 ]
