@@ -169,8 +169,8 @@
   "updated": "2026-11-08",
   "privacy": {
    "server": "Cloudflare",
-   "tables": false,
-   "leaderboards": false,
+   "tables": true,
+   "leaderboards": true,
    "discordIdentify": false,
    "accounts": "Hostinger"
   }
